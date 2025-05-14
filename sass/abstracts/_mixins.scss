@@ -1,0 +1,74 @@
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin centerElementAbsolutePosition {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// MEDIA Query Manager
+/*
+0 - 600px     phone
+600 - 900px   tablet portrait
+900 - 1200px  teblet landscape
+[1200 - 1800] is where our normal styles apply
+1800 +        Big desktop
+*/
+
+@mixin respond-phone {
+  @media (max-width: 600px) {
+    @content;
+  }
+}
+
+/*
+$breakpoint argument choices:
+- phone 
+- tab-port
+- tab-land
+- big-desktop
+
+ORDER: BASE + typography > general layout + gird > page layout > components
+
+1em = 16px
+*/
+//  only screen [helpfull when someone trys to print our page - so it only applys on screen]
+@mixin respond($breakpoint) {
+  @if $breakpoint == sm-phone {
+    @media only screen and (max-width: calc((500 / 16) * 1em)) {
+      @content;
+    }
+  }
+  @if $breakpoint == phone {
+    @media only screen and (max-width: calc((600 / 16) * 1em)) {
+      @content;
+    }
+  }
+  @if $breakpoint == tab-port {
+    @media only screen and (max-width: calc((900 / 16) * 1em)) {
+      @content;
+    }
+  }
+  @if $breakpoint == tab-port2 {
+    @media only screen and (max-width: calc((1100 / 16) * 1em)) {
+      @content;
+    }
+  }
+  @if $breakpoint == tab-land {
+    @media only screen and (max-width: calc((1200 / 16) * 1em)) {
+      @content;
+    }
+  }
+  @if $breakpoint == big-desktop {
+    @media only screen and (max-width: calc((1800 / 16) * 1em)) {
+      @content;
+    }
+  }
+}

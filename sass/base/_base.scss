@@ -1,0 +1,43 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  /* it will inherit it from body */
+  box-sizing: inherit;
+}
+
+html {
+  // @include respond(big-desktop) {
+  //   font-size: calc((12 / 16) * 100%);
+  // }
+
+  /* 1rem = 10px */
+  /* font-size: 10px;  10/16  * 100% =      */
+  // font-size: 62.5%;
+  font-size: calc((10 / 16) * 100%);
+
+  // always larger ones comes before the small ones
+  @include respond(tab-port2) {
+    font-size: calc((8 / 16) * 100%);
+  }
+  
+  // @include respond(phone) {
+  //   font-size: 50%;
+  // }
+}
+
+body {
+  box-sizing: border-box;
+  background-image: linear-gradient(
+    to right bottom,
+    var(--color-primary-light),
+    var(--color-primary-dark)
+  );
+
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  // remove this when our elements becomes larger
+  min-height: 100vh;
+}

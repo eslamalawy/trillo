@@ -1,0 +1,14 @@
+.container {
+  max-width: 120rem;
+  margin: 8rem auto;
+  background-color: var(--color-grey-light-1);
+  box-shadow: var(--shadow-dark);
+  min-height: 50rem;
+
+  @include respond(tab-land) {
+    margin: 0;
+    max-width: 100%;
+    width: 100%;
+  }
+ 
+}

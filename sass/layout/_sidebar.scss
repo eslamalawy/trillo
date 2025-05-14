@@ -1,0 +1,113 @@
+.sidebar {
+  background-color: var(--color-grey-dark-1);
+  flex: 0 0 18%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+///////////////////////////////////////
+// SIDE NAVIGATION
+.side-nav {
+  font-size: 1.4rem;
+  list-style: none;
+  margin-top: 3.5rem;
+  @include respond(tab-port) {
+    display: flex;
+    margin: 0;
+  }
+
+  &__item {
+    position: relative;
+    &:not(:last-child) {
+      margin-bottom: 0.5rem;
+      @include respond(tab-port) {
+        margin: 0;
+      }
+    }
+    @include respond(tab-port) {
+      flex: 1;
+    }
+  }
+
+  &__item::before {
+    transform: scaleY(0);
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background-color: var(--color-primary);
+    transition: transform 0.2s, width 0.4s cubic-bezier(1, 0, 0, 1) 0.2s,
+      background-color 0.1s;
+  }
+
+  &__item:hover::before,
+  &__item--active::before {
+    transform: scaleY(1);
+    width: 100%;
+  }
+
+  &__item:active::before {
+    background-color: var(--color-primary-light);
+  }
+  &__link:link,
+  &__link:visited {
+    display: flex;
+    align-items: center;
+    color: var(--color-grey-light-1);
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 1.5rem 3rem;
+    // display: block;
+    // z-index works if there a position specified
+    position: relative;
+    z-index: 10;
+
+    @include respond(tab-port) {
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    @include respond(phone) {
+      flex-direction: column;
+      padding: 1.5rem 0.5rem;
+    }
+  }
+
+  &__icon {
+    width: 1.75rem;
+    height: 1.75rem;
+    margin-right: 2rem;
+    fill: currentColor;
+
+    @include respond(phone) {
+      margin-right: 0;
+      margin-bottom: 0.7rem;
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+}
+
+///////////////////////////////////////
+// LEGAL TEXT
+.legal {
+  font-size: 1.2rem;
+  color: var(--color-grey-light-4);
+  text-align: center;
+  padding: 2.5rem;
+
+  a {
+    color: var(--color-primary);
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  @include respond(tab-port) {
+    display: none;
+  }
+}
