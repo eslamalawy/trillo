@@ -52,4 +52,3 @@ To run the project locally:
 ## Contributing
 
 Contributions are welcome! Feel free to submit issues and pull requests to enhance the application's functionality and design.
-```
